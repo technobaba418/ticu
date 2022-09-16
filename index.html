@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Tic-Tac-Toe</title>
+    <meta name="description" content="Play Tic-Tac-Toe with an AI bot">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22>🎮</text></svg>">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <center>
+    <h1>TIC TAC TOE </h1>
+  </center>
+    <div class="container-fluid py-3 mt-2" id="play-area">
+        <div class="d-flex justify-content-center">
+            <label class="h2" id="score-board">
+                <span class="px-4" id="cross-score"> X: 0</span>
+                <span class="px-4" id="nut-score"> O: 0</span>
+            </label>
+        </div>
+        <div class="d-flex justify-content-center mt-2">
+            <div class="btn-group" role="group" aria-label="Difficulty controls" id="difficulty">
+                <button type="button" class="btn btn-light" id="impossible">Impossible</button>
+                <button type="button" class="btn btn-light" id="possible">Possible</button>
+            </div>
+
+            <button type="button" class="btn btn-danger ml-2" id="reset">Reset</button>
+            <button type="button" class="btn btn-success ml-2" id="play-again" hidden="true">Play again</button>
+        </div>
+
+        <div class="mt-2">
+            <div class="row d-flex justify-content-center">
+                <div class="column"> <img class="cell img-fluid" width="100" src="img/blank.png" alt="blank"> </div>
+                <div class="column"> <img class="cell img-fluid" width="100" src="img/blank.png" alt="blank"> </div>
+                <div class="column"> <img class="cell img-fluid" width="100" src="img/blank.png" alt="blank"> </div>
+            </div>
+            <div class="row d-flex justify-content-center">
+                <div class="column"> <img class="cell img-fluid" width="100" src="img/blank.png" alt="blank"> </div>
+                <div class="column"> <img class="cell img-fluid" width="100" src="img/blank.png" alt="blank"> </div>
+                <div class="column"> <img class="cell img-fluid" width="100" src="img/blank.png" alt="blank"> </div>
+            </div>
+            <div class="row d-flex justify-content-center">
+                <div class="column"> <img class="cell img-fluid" width="100" src="img/blank.png" alt="blank"> </div>
+                <div class="column"> <img class="cell img-fluid" width="100" src="img/blank.png" alt="blank"> </div>
+                <div class="column"> <img class="cell img-fluid" width="100" src="img/blank.png" alt="blank"> </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+
+
+    <!-- Modals -->
+    <!--About modal-->
+    <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="modal-about"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modal-about"> About </h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p> Play the popular game Tic-Tac-Toe against a bot using the minimax algorithm. Have fun playing
+                        the game! </p>
+
+                    <a href="https://github.com/InputBlackBoxOutput/Tic-Tac-Toe-Online" target="_blank"> See repository
+                        on GitHub </a>
+                    <p> Created by Rutuparn Pawar (InputBlackBoxOutput) </p>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-block btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- How to use Modal-->
+    <div class="modal fade" id="helpModal" tabindex="-1" role="dialog" aria-labelledby="modal-help" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modal-help"> How to play? </h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        <li>The objective of Tic Tac Toe is to get three in a row, column or diagonal.</li>
+                        <li>You play on a three by three game board.</li>
+                        <li>The first player is known as X and the second is O.</li>
+                        <li>Players alternately place Xs and Os on the game board until either opponent has three in a
+                            row/column/diagonal
+                            or all nine squares are filled.</li>
+                        <li>X always goes first, and in the event that no one has three in a row, the stalemate is
+                            called a cat game.</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-block btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="minmax.js"></script>
+    <script type="text/javascript" src="game.js"></script>
+</body>

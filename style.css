@@ -1,0 +1,45 @@
+body {
+	background-color: #A4A4A4;
+	font-family: Roboto, Verdana, sans-serif;
+}
+
+.container-fluid {
+	background-color: white;
+}
+
+#play-area {
+	background-color: #353535 !important;
+}
+
+#score-board {
+	background-color: white;
+	margin: 0px 0px;
+	padding: 0% 4%;
+	font-size: 30px;
+	border: 2px solid darkgray;
+	border-radius: 10px;
+}
+
+#cross-score {
+	font-style: Consolas;
+	color: #3A9A1A;
+}
+
+#nut-score {
+	font-style: Consolas;
+	color: #BC8811;
+}
+
+.cell {
+	cursor: pointer;
+	margin: 2px 2px;
+}
+
+#result {
+	color: white;
+}
+
+#footer {
+	color: white;
+	background-color: #303030;
+}
